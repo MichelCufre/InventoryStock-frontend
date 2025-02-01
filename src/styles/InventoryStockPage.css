@@ -1,0 +1,64 @@
+.inventory-stock-page {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1,
+  h2 {
+    color: rgb(80, 136, 161);
+  }
+  
+  .inventory-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventory-list th,
+  .inventory-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .inventory-list th {
+    background-color: rgb(80, 136, 161);
+    color: white;
+  }
+  
+  .inventory-list button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: rgb(80, 136, 161);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-item-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .add-item-form input {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .add-item-form button {
+    padding: 10px;
+    background-color: rgb(80, 136, 161);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-item-form button:hover,
+  .inventory-list button:hover {
+    background-color: rgb(64, 111, 133);
+  }
