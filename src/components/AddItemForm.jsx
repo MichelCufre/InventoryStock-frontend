@@ -2,14 +2,17 @@ import { useState } from "react"
 
 const AddItemForm = ({ addItem }) => {
   const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
   const [quantity, setQuantity] = useState("")
   const [price, setPrice] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (name && quantity && price) {
-      addItem({ name, quantity: Number.parseInt(quantity), price: Number.parseFloat(price) })
+
+    if (name && quantity && price && description) {
+      addItem({ name, description, quantity: Number.parseInt(quantity), price: Number.parseFloat(price) })
       setName("")
+      setDescription("")
       setQuantity("")
       setPrice("")
     }
@@ -19,6 +22,8 @@ const AddItemForm = ({ addItem }) => {
     <form className="add-item-form" onSubmit={handleSubmit}>
       <h2>Add New Item</h2>
       <input type="text" placeholder="Item Name" value={name} onChange={(e) => setName(e.target.value)} required />
+      <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+
       <input
         type="number"
         placeholder="Quantity"

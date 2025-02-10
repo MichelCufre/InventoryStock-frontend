@@ -1,26 +1,35 @@
 import Header from "./assets/header.jsx"
+import InventoryList from "./components/InventoryList"
+import { Link } from "react-router-dom";
+
 const HomePage = () => {
     return (
       <div className="home-page">
-        
         <Header />
+
         <main>
           <section className="hero">
             <h1>Streamline Your Inventory Management</h1>
             <p>Efficient. Accurate. Real-time.</p>
-            <button className="cta-button">Get Started</button>
+            <Link to="/InventoryList">
+              <button className="cta-button">Get Started</button>
+            </Link>
           </section>
-  
+
           <section className="features" id="features">
             <h2>Our Features</h2>
             <div className="feature-grid">
               <div className="feature-item">
                 <h3>Real-time Tracking</h3>
-                <p>Monitor your stock levels in real-time across all locations.</p>
+                <p>
+                  Monitor your stock levels in real-time across all locations.
+                </p>
               </div>
               <div className="feature-item">
                 <h3>Automated Reordering</h3>
-                <p>Set up automatic reorders when stock reaches a certain level.</p>
+                <p>
+                  Set up automatic reorders when stock reaches a certain level.
+                </p>
               </div>
               <div className="feature-item">
                 <h3>Detailed Analytics</h3>
@@ -33,12 +42,12 @@ const HomePage = () => {
             </div>
           </section>
         </main>
-  
+
         <footer>
           <p>&copy; 2025 Inventory Stock Service. All rights reserved.</p>
         </footer>
-  
-        <style jsx>{`
+
+        <style>{`
           .home-page {
             font-family: Arial, sans-serif;
             color: #333;
@@ -132,7 +141,7 @@ const HomePage = () => {
           }
         `}</style>
       </div>
-    )
+    );
   }
   
   export default HomePage

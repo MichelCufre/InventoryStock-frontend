@@ -2,6 +2,9 @@ import { useState } from "react"
 import InventoryList from "./InventoryList"
 import AddItemForm from "./AddItemForm"
 import "../styles/InventoryStockPage.css"
+import Header from "../assets/headerF.jsx"
+
+
 
 const InventoryStockPage = () => {
   const [inventory, setInventory] = useState([
@@ -20,13 +23,19 @@ const InventoryStockPage = () => {
     )
   }
 
+  const alerted = () => { 
+    alert();
+  }
+
   return (
     <div className="inventory-stock-page">
+      <Header />
       <h1>Inventory Stock Management</h1>
       <AddItemForm addItem={addItem} />
-      <InventoryList inventory={inventory} updateQuantity={updateQuantity} />
+      <InventoryList inventory={inventory} updateQuantity={updateQuantity} alerted={alerted}/>
     </div>
   )
+  
 }
 
 export default InventoryStockPage

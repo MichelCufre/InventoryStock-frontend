@@ -1,28 +1,29 @@
+import { Link } from "react-router-dom";
 const Header = () => {
     return (
     <div className="header">
     <header>
-          <nav>
-            <a href="../HomePage.jsx">
-            <img class="box" src="../public/boxIcon.png" alt="box" />
-            </a>
-            <p class="textIcon">StockInv</p>
-            <ul>
-              <li>
-                <a href="#home">Home</a>
-              </li>
-              <li>
-                <a href="#features">Features</a>
-              </li>
-              <li>
-                <a href="#pricing">Pricing</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-    </header>
+        <nav>
+          <Link to="/">
+            <img className="box" src="./boxIcon.png" alt="box" />
+          </Link>
+          <p className="textIcon">StockInv</p>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/features">Features</Link>
+            </li>
+            <li>
+              <Link to="/pricing">Pricing</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
     <style>{`
         header {
@@ -38,7 +39,7 @@ const Header = () => {
         .box {
             margin-left: 25px;
             width: 64px;
-            heigth: 64px;
+            height: 64px;
             filter: brightness(0) invert(1);
         }
         nav {
