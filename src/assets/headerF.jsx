@@ -1,66 +1,93 @@
-import InventoryList from "../components/InventoryList"
-import AddItemForm from "../components/AddItemForm"
 import { Link } from "react-router-dom";
 
 const HeaderF = () => {
     return (
-    <div className="header">
-    <header>
-    <nav>
-        <Link to="/InventoryList">
-          <img className="box" src="./boxIcon.png" alt="box" />
-        </Link>
-        <p className="textIcon">StockInv</p>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/InventoryList">Inventory</Link>
-          </li>
-          <li>
-            <Link to="/InventoryList">Add</Link>
-          </li>
-          <li>
-            <Link to="/InventoryList">Update</Link>
-          </li>
-          <li>
-            <Link to="/InventoryList">Log</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        <header className="header">
+            <nav className="nav-container">
+                <Link to="/" className="logo">
+                    <img className="box" src="./boxIcon.png" alt="box" />
+                    <p className="textIcon">StockInv</p>
+                </Link>
+                <ul className="nav-links">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/inventoryList">Inventory</Link></li>
+                    <li><Link to="/AddItemForm">Add</Link></li>
+                    <li><Link to="/update">Update</Link></li>
+                    <li><Link to="/log">Logs</Link></li>
+                </ul>
+            </nav>
 
-    <style>{`
-        header {
-        background-color: rgb(80, 136, 161);
-        padding: 1rem 0;
-        }
+            <style>{`
+                .header {
+                    background-color: rgb(80, 136, 161);
+                    padding: 15px 0;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                }
 
-        .textIcon{
-        color: white;
-        padding-left:0.1em;
-        margin-top: 25px;
-        }
+                .nav-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 20px;
+                }
 
-        .box {
-            margin-left: 25px;
-            width: 64px;
-            height: 64px;
-            filter: brightness(0) invert(1);
-        }
-        nav {
-            display: flex; 
-        }
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                }
 
-        ul{
-            margin-left: 7em;
-        
-        }
+                .box {
+                    width: 50px;
+                    height: 50px;
+                    filter: brightness(0) invert(1);
+                    margin-right: 10px;
+                }
 
+                .textIcon {
+                    color: white;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
 
-    `}</style>
-    </div>
-    )
-}
-export default HeaderF
+                .nav-links {
+                    list-style: none;
+                    display: flex;
+                    gap: 20px;
+                }
+
+                .nav-links li {
+                    display: inline-block;
+                }
+
+                .nav-links a {
+                    text-decoration: none;
+                    color: white;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    transition: color 0.3s ease-in-out;
+                }
+
+                .nav-links a:hover {
+                    color:rgb(228, 220, 220);
+                }
+
+                @media (max-width: 768px) {
+                    .nav-container {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .nav-links {
+                        flex-direction: column;
+                        gap: 10px;
+                        margin-top: 10px;
+                    }
+                }
+            `}</style>
+        </header>
+    );
+};
+
+export default HeaderF;
