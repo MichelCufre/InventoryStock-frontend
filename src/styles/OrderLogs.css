@@ -1,0 +1,26 @@
+.order-logs {
+    margin-top: 20px;
+  }
+  
+  .order-card {
+
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .order-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+  
+  .order-card ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .order-card li {
+    margin-bottom: 5px;
+  }
+  

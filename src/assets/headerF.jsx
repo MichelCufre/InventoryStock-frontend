@@ -12,8 +12,8 @@ const HeaderF = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/inventoryList">Inventory</Link></li>
                     <li><Link to="/AddItemForm">Add</Link></li>
-                    <li><Link to="/update">Update</Link></li>
-                    <li><Link to="/log">Logs</Link></li>
+                    <li><Link to="/updateItem">Update</Link></li>
+                    <li><Link to="/orderLogs">Logs</Link></li>
                 </ul>
             </nav>
 

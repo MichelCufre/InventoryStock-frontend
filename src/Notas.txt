@@ -1,0 +1,6 @@
+Implementar en el backend los nuevos datos del order
+
+En frontend, debo revisar si vale la pena tener el main page o simplemente mostrar cada componenete
+si es el segundo caso separar los componentes de la main page totalmente
+
+Corregir del update el selectBox y moverlo directamente al lapiz del contenedor del item al revisar inventario

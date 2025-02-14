@@ -1,0 +1,28 @@
+.update-item {
+  margin-top: 20px;
+}
+
+.update-item form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.update-item select,
+.update-item input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.update-item button {
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.update-item button:hover {
+  background-color: var(--secondary-color);
+}

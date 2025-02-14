@@ -1,0 +1,102 @@
+.inventory-list {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+  }
+  
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .inventory-item {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 5px 4px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .inventory-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 8px var(--shadow-color);
+  }
+  
+  .inventory-item h3 {
+    margin: 0 0 3px 0;
+    color: var(--primary-color);
+  }
+  
+  .inventory-item p {
+    margin: 0 0 1px 0;
+  }
+  
+  .inventory-item img {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+  }
+  
+  .item-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .item-actions button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .item-icons {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .inventory-item:hover .item-icons {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .edit-icon,
+  .delete-icon {
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+    font-size: 1.2rem;
+  }
+  
+  .edit-icon:hover {
+    color: #007bff;
+  }
+  
+  .delete-icon:hover {
+    color: #d4192c;
+  }
+  
+  .selectedItems {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+  }

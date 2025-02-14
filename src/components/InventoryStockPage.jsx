@@ -2,6 +2,7 @@ import { useState } from "react"
 import InventoryList from "./InventoryList"
 import AddItemForm from "./AddItemForm"
 import "../styles/InventoryStockPage.css"
+import "../global.css"
 import Header from "../assets/headerF.jsx"
 
 

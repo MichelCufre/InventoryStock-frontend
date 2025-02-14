@@ -3,8 +3,10 @@ import HomePage from "./HomePage";
 import InventoryStockPage from "./components/InventoryStockPage";
 import AddItemForm from "./components/AddItemForm";
 import InventoryList from "./components/InventoryList";
+import OrderLogs from "./components/OrderLogs";
+import UpdateItem from "./components/UpdateItemForm";
+
 /*import UpdateItemPage from "./components/UpdateItemPage";
-import LogPage from "./components/LogPage";
 import FeaturesPage from "./components/FeaturesPage";
 import PricingPage from "./components/PricingPage";
 import ContactPage from "./components/ContactPage";
@@ -26,6 +28,8 @@ function App() {
         <Route path="/inventoryList" element={<InventoryStockPage />} />
         <Route path="/AddItemForm" element={<AddItemForm />} />
         <Route path="/inventoryList" element={<InventoryList />} />
+        <Route path="/orderLogs" element={<OrderLogs />} />
+        <Route path="/updateItem" element={<UpdateItem />} />
         
         
       </Routes>

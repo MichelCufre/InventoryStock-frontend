@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Header from "../assets/headerF.jsx"
+import "../global.css"
 
 const AddItemForm = ({ addItem }) => {
   const [name, setName] = useState("");
@@ -23,6 +24,7 @@ const AddItemForm = ({ addItem }) => {
       setPrice("");
     }
   };
+  
 
   return (
     <div className="inventory-stock-page">

@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"; 
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"; 
+import "../global.css"
+import "../styles/InventoryList.css";
+
 const InventoryList = ({ inventory, updateQuantity, alerted }) => {
-  // Usar un `Set` para evitar duplicados
+  
+
   const selectedItems = [...new Map(inventory.filter(item => item.taken > 0).map(item => [item.id, item])).values()];
 
   return (
@@ -12,7 +16,10 @@ const InventoryList = ({ inventory, updateQuantity, alerted }) => {
         <div className="inventory-grid">
           {inventory.map((item) => (
             <div key={item.id} className="inventory-item">
-              
+              <div className="item-icons">
+                <FontAwesomeIcon icon={faPen} className="edit-icon" />
+                <FontAwesomeIcon icon={faTrashCan} className="delete-icon" />
+              </div>
               <img src="https://static.thenounproject.com/png/2535689-200.png"></img>
               
               <h3>{item.name}</h3>
