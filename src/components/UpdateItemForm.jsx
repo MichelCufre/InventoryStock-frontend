@@ -29,21 +29,10 @@ const UpdateItemForm = ({ items, onUpdateItem }) => {
     <div className="inventory-stock-page">
       <Header />
     <div className="update-item">
-      <h2>Update Item</h2>
       <div className="add-item-form-container">
+      <h2>Update Item</h2>
       <form onSubmit={handleSubmit}>
-      <select value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)} required>
-  <option value="">Select an item</option>
-  {items?.length > 0 ? (
-    items.map((item) => (
-      <option key={item.id} value={item.id}>
-        {item.name}
-      </option>
-    ))
-  ) : (
-    <option disabled>No items available</option>
-  )}
-</select>
+     
         <input
           type="text"
           placeholder="New Name (optional)"

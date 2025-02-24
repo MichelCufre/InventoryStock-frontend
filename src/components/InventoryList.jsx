@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"; 
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"; 
+import { useState, useEffect } from "react";
 import "../global.css"
 import "../styles/InventoryList.css";
+import { getProducts } from "../api/products";
+
 
 const InventoryList = ({ inventory, updateQuantity, alerted }) => {
   
 
   const selectedItems = [...new Map(inventory.filter(item => item.taken > 0).map(item => [item.id, item])).values()];
-
   return (
     <main>
       <div className="inventory-list">
@@ -22,7 +24,7 @@ const InventoryList = ({ inventory, updateQuantity, alerted }) => {
               </div>
               <img src="https://static.thenounproject.com/png/2535689-200.png"></img>
               
-              <h3>{item.name}</h3>
+              <h3>{item.id}# {item.name}</h3>
               <p>Quantity: {item.quantity}</p>
               <p>Price: ${item.price.toFixed(2)}</p>
               <p>Taken: {item.taken}</p>
