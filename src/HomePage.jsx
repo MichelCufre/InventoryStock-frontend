@@ -1,6 +1,8 @@
 import Header from "./assets/header.jsx"
 import InventoryList from "./components/InventoryList"
 import { Link } from "react-router-dom";
+import "./global.css"
+
 
 const HomePage = () => {
     return (
@@ -49,15 +51,14 @@ const HomePage = () => {
 
         <style>{`
           .home-page {
-            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
             color: #333;
             line-height: 1.6;
           }
   
-          header {
-            background-color: rgb(80, 136, 161);
-            padding: 1rem 0;
-          }
+        
   
           nav ul {
             display: flex;
@@ -77,7 +78,7 @@ const HomePage = () => {
           }
   
           .hero {
-            background-color: rgb(80, 136, 161);
+            background-color: var(--primary-color);
             color: white;
             text-align: center;
             padding: 4rem 2rem;
@@ -90,7 +91,7 @@ const HomePage = () => {
           }
   
           .cta-button {
-            background-color: rgb(80, 136, 161);
+            background-color: rgb(101, 153, 177);
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -110,7 +111,7 @@ const HomePage = () => {
   
           .features h2 {
             text-align: center;
-            color: rgb(80, 136, 161);
+            color: var(--primary-color);
             margin-bottom: 2rem;
           }
   
@@ -128,12 +129,12 @@ const HomePage = () => {
           }
   
           .feature-item h3 {
-            color:rgb(80, 136, 161);
+            color:var(--primary-color);
             margin-bottom: 0.5rem;
           }
   
           footer {
-            background-color: rgb(80, 136, 161);
+            background-color: var(--primary-color);
             color: white;
             text-align: center;
             padding: 1rem 0;

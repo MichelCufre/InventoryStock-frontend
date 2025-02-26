@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import "../global.css"
+
 const Header = () => {
     return (
     <div className="header">
@@ -27,7 +29,7 @@ const Header = () => {
 
     <style>{`
         header {
-        background-color: rgb(80, 136, 161);
+        background-color: var(--primary-color);
         padding: 1rem 0;
         }
 

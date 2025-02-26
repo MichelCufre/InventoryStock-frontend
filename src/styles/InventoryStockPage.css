@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
-
-
 
 .inventory-stock-page {
   max-width: 1200px;
@@ -33,7 +30,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-main {
+.inventory-stock-page main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;

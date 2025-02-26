@@ -30,8 +30,6 @@ function App() {
         <Route path="/inventoryList" element={<InventoryList />} />
         <Route path="/orderLogs" element={<OrderLogs />} />
         <Route path="/updateItem" element={<UpdateItem />} />
-        
-        
       </Routes>
     </>
   );

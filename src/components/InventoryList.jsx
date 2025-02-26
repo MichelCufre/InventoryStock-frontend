@@ -11,6 +11,7 @@ const InventoryList = ({ inventory, updateQuantity, alerted }) => {
   
 
   const selectedItems = [...new Map(inventory.filter(item => item.taken > 0).map(item => [item.id, item])).values()];
+
   return (
     <main>
       <div className="inventory-list">

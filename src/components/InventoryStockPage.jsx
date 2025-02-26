@@ -1,10 +1,9 @@
 import { useState } from "react"
 import InventoryList from "./InventoryList"
 import AddItemForm from "./AddItemForm"
-import "../styles/InventoryStockPage.css"
 import "../global.css"
 import Header from "../assets/headerF.jsx"
-
+import "../styles/InventoryStockPage.css"
 
 
 const InventoryStockPage = () => {
@@ -17,6 +16,7 @@ const InventoryStockPage = () => {
     { id: 6, name: "Doohickey C", quantity: 75, originalQuantity: 75, price: 4.99, taken:0, originalTaken:75},
   ])
 
+  
   const addItem = (newItem) => {
     setInventory([...inventory, { ...newItem, id: inventory.length + 1 }])
   }
