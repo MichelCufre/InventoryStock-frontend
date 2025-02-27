@@ -42,14 +42,19 @@ const InventoryList = ({ inventory, updateQuantity, alerted }) => {
       <div className="selectedItems">
         <h2>Already Selected</h2>
         {selectedItems.length > 0 ? (
-          selectedItems.map((item) => (
+           <>
+          {selectedItems.map((item) => (
             <div key={item.id}>
               <p>Taken: {item.taken}, {item.name}</p>
             </div>
-          ))
+            
+          ))}
+          <button>Select</button>
+          </>
         ) : (
           <p>No items selected.</p>
         )}
+        
       </div>
     </main>
   );

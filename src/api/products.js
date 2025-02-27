@@ -20,6 +20,15 @@ export const getItemById = async (id) => {
 };
 
 // Agregar un nuevo producto
+/*export const addItem = async (item) => {
+  const response = await fetch(`${API_URL}/products`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(item),
+  });
+  return response.json();
+};*/
+
 export const addItem = async (item) => {
   const response = await fetch(`${API_URL}/products`, {
     method: "POST",
@@ -27,6 +36,30 @@ export const addItem = async (item) => {
     body: JSON.stringify(item),
   });
   return response.json();
+};
+
+// Función para agregar el producto y actualizar la UI
+export const handleAddItem = async (newItem, setInventory) => {
+  try {
+    const addedItem = await addItem(newItem);
+    if (addedItem) {
+      setInventory((prevInventory) => [
+        ...prevInventory,
+        {
+          id: addedItem.id, 
+          name: addedItem.name,
+          description: addedItem.description || "No description available",
+          quantity: addedItem.quantity,
+          originalQuantity: addedItem.quantity,
+          price: addedItem.price,
+          taken: 0,
+          originalTaken: addedItem.quantity,
+        },
+      ]);
+    }
+  } catch (error) {
+    console.error("Error adding product:", error);
+  }
 };
 
 // Actualizar un producto por ID

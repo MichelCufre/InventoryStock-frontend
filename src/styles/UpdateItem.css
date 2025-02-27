@@ -5,13 +5,15 @@
 .update-item form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .update-item select,
 .update-item input {
-  padding: 5px;
-  font-size: 16px;
+  padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .update-item button {

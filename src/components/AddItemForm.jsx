@@ -1,13 +1,15 @@
-import { useState } from "react"
+/*import { useState } from "react"
 import Header from "../assets/headerF.jsx"
 import "../global.css"
+import "../styles/AddItemForm.css";
 
 const AddItemForm = ({ addItem }) => {
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -23,8 +25,44 @@ const AddItemForm = ({ addItem }) => {
       setQuantity("");
       setPrice("");
     }
-  };
+  };*/
   
+
+import { useState } from "react"
+import Header from "../assets/headerF.jsx"
+import "../global.css"
+import "../styles/AddItemForm.css"
+import { handleAddItem } from "../api/products";
+
+const AddItemForm = () => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !quantity || !price || !description) return;
+
+    setLoading(true);
+
+    await handleAddItem(
+      {
+        name,
+        description,
+        quantity: parseInt(quantity),
+        price: parseFloat(price),
+      },
+o
+    );
+
+    setName("");
+    setDescription("");
+    setQuantity("");
+    setPrice("");
+    setLoading(false);
+  };
 
   return (
     <div className="inventory-stock-page">
@@ -33,6 +71,7 @@ const AddItemForm = ({ addItem }) => {
       <div className="add-item-form-container">
         <form className="add-item-form" onSubmit={handleSubmit}>
           <h2>Add New Item</h2>
+
           <input
             type="text"
             placeholder="Item Name"

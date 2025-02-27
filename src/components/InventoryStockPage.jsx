@@ -1,32 +1,64 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InventoryList from "./InventoryList"
-import AddItemForm from "./AddItemForm"
 import "../global.css"
 import Header from "../assets/headerF.jsx"
+import Footer from "../assets/footer.jsx"
 import "../styles/InventoryStockPage.css"
-
+import { getProducts, addItem } from "../api/products"  // Importamos la API
 
 const InventoryStockPage = () => {
-  const [inventory, setInventory] = useState([
-    { id: 1, name: "Widget A", quantity: 50, originalQuantity: 50, price: 9.99, taken:0, originalTaken:50},
-    { id: 2, name: "Gadget B", quantity: 30, originalQuantity: 30, price: 19.99, taken:0, originalTaken:30},
-    { id: 3, name: "Doohickey C", quantity: 75, originalQuantity: 75, price: 4.99, taken:0, originalTaken:75},
-    { id: 4, name: "Widget A", quantity: 50, originalQuantity: 50, price: 9.99, taken:0, originalTaken:50},
-    { id: 5, name: "Gadget B", quantity: 30, originalQuantity: 30, price: 19.99, taken:0, originalTaken:30},
-    { id: 6, name: "Doohickey C", quantity: 75, originalQuantity: 75, price: 4.99, taken:0, originalTaken:75},
-  ])
+  const [inventory, setInventory] = useState([])
 
+
+  // Cargar productos desde la API al montar el componente
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsFromAPI = await getProducts() // Llamamos a la API
+        const processedProducts = productsFromAPI.map((product) => ({
+          ...product, 
+          originalQuantity: product.quantity, // Guardamos el valor original de la cantidad
+          taken: 0, 
+          originalTaken: product.quantity, // Guardamos el original para manejar "tomados"
+          img: product.img || "https://static.thenounproject.com/png/2535689-200.png" // Imagen por defecto
+        }))
+        setInventory(processedProducts) // Guardamos los datos en el estado
+      } catch (error) {
+        console.error("Error fetching products:", error)
+      }
+    }
+
+    fetchProducts()
+  }, []) 
   
-  const addItem = (newItem) => {
-    setInventory([...inventory, { ...newItem, id: inventory.length + 1 }])
+
+   // Agregar nuevo producto a la API y actualizar el estado
+   const handleAddItem = async (newItem) => {
+    const addedItem = await addItem(newItem) // Enviar a la API
+    if (addedItem) {
+      setInventory((prevInventory) => [
+        ...prevInventory,
+        {
+          id: addedItem.id, // ID generado por la BD
+          name: addedItem.name,
+          description: addedItem.description || "No description available",
+          quantity: addedItem.quantity,
+          originalQuantity: addedItem.quantity,
+          price: addedItem.price,
+          taken: 0,
+          originalTaken: addedItem.quantity,
+        },
+      ])
+    }
   }
 
+
+  
   const updateQuantity = (id, change) => {
     setInventory(
       inventory.map((item) => (item.id === id ? { ...item, quantity: Math.min(item.originalQuantity, Math.max(0, item.quantity - change)),
                                                             taken: Math.min(item.originalTaken, Math.max(0, item.taken + change)) } : item)),
     )
-
   }
 
   const alerted = () => { 
@@ -38,6 +70,8 @@ const InventoryStockPage = () => {
       <Header />
       <h1>Inventory Stock Management</h1>
       <InventoryList inventory={inventory} updateQuantity={updateQuantity} alerted={alerted}/>
+      
+      <Footer />
     </div>
   )
   
