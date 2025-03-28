@@ -1,62 +1,44 @@
 
-import { api, API_URL } from "./config";
-
+import { api } from "./config"; 
 
 // Obtener todos los productos
 export const getProducts = async () => {
-    try {
-      const response = await api.get("/products");
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
-  };
+  try {
+    const response = await api.get("/products");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};
 
 // Obtener un producto por ID
 export const getItemById = async (id) => {
-  const response = await fetch(`${API_URL}/products/${id}`);
-  return response.json();
+  try {
+    const response = await api.get(`/products/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product by ID:", error);
+    throw error;
+  }
 };
 
 // Agregar un nuevo producto
-/*export const addItem = async (item) => {
-  const response = await fetch(`${API_URL}/products`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(item),
-  });
-  return response.json();
-};*/
-
 export const addItem = async (item) => {
-  const response = await fetch(`${API_URL}/products`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(item),
-  });
-  return response.json();
+  try {
+    const response = await api.post("/products/register", item);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding product:", error);
+    throw error;
+  }
 };
 
 // Función para agregar el producto y actualizar la UI
-export const handleAddItem = async (newItem, setInventory) => {
+export const handleAddItem = async (newItem) => {
   try {
     const addedItem = await addItem(newItem);
-    if (addedItem) {
-      setInventory((prevInventory) => [
-        ...prevInventory,
-        {
-          id: addedItem.id, 
-          name: addedItem.name,
-          description: addedItem.description || "No description available",
-          quantity: addedItem.quantity,
-          originalQuantity: addedItem.quantity,
-          price: addedItem.price,
-          taken: 0,
-          originalTaken: addedItem.quantity,
-        },
-      ]);
-    }
+    return addedItem; // Retorna el producto agregado
   } catch (error) {
     console.error("Error adding product:", error);
   }
@@ -64,19 +46,22 @@ export const handleAddItem = async (newItem, setInventory) => {
 
 // Actualizar un producto por ID
 export const updateProduct = async (id, updatedData) => {
-    const response = await fetch(`${API_URL}/products/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
-    });
-    return response.json();
-  };
+  try {
+    const response = await api.put(`/products/${id}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating product:", error);
+    throw error;
+  }
+};
 
 // Eliminar un producto por ID
 export const deleteItem = async (id) => {
-  const response = await fetch(`${API_URL}/products/${id}`, {
-    method: "DELETE",
-  });
-  return response.json();
+  try {
+    const response = await api.delete(`/products/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    throw error;
+  }
 };
-

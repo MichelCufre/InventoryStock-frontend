@@ -1,51 +1,21 @@
-/*import { useState } from "react"
-import Header from "../assets/headerF.jsx"
-import "../global.css"
-import "../styles/AddItemForm.css";
-
-const AddItemForm = ({ addItem }) => {
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (name && quantity && price && description) {
-      addItem({
-        name,
-        description,
-        quantity: Number.parseInt(quantity),
-        price: Number.parseFloat(price),
-      });
-      setName("");
-      setDescription("");
-      setQuantity("");
-      setPrice("");
-    }
-  };*/
-  
-
 import { useState } from "react"
 import Header from "../assets/headerF.jsx"
 import "../global.css"
 import "../styles/AddItemForm.css"
 import { handleAddItem } from "../api/products";
 
+
 const AddItemForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [img, setImg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !quantity || !price || !description) return;
 
-    setLoading(true);
 
     await handleAddItem(
       {
@@ -53,15 +23,14 @@ const AddItemForm = () => {
         description,
         quantity: parseInt(quantity),
         price: parseFloat(price),
+        img,
       },
-o
     );
 
     setName("");
     setDescription("");
     setQuantity("");
     setPrice("");
-    setLoading(false);
   };
 
   return (
@@ -103,6 +72,11 @@ o
             required
             min="0"
             step="0.01"
+          />
+          <input
+            type="file"
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
           />
           <button type="submit">Add Item</button>
         </form>

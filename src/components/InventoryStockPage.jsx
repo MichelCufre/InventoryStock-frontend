@@ -20,7 +20,7 @@ const InventoryStockPage = () => {
           originalQuantity: product.quantity, // Guardamos el valor original de la cantidad
           taken: 0, 
           originalTaken: product.quantity, // Guardamos el original para manejar "tomados"
-          img: product.img || "https://static.thenounproject.com/png/2535689-200.png" // Imagen por defecto
+          img: product.img 
         }))
         setInventory(processedProducts) // Guardamos los datos en el estado
       } catch (error) {
@@ -65,9 +65,13 @@ const InventoryStockPage = () => {
     alert();
   }
 
+
+
+
   return (
     <div className="inventory-stock-page">
       <Header />
+      
       <h1>Inventory Stock Management</h1>
       <InventoryList inventory={inventory} updateQuantity={updateQuantity} alerted={alerted}/>
       
